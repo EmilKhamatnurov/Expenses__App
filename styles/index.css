@@ -2,6 +2,9 @@ html,
 body {
 	background-color: #131313;
 }
+.body_fixed {
+	overflow: hidden;
+}
 
 hr {
 	background: #fff;
