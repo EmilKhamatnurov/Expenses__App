@@ -15,7 +15,7 @@ const clearButtonNode = document.querySelector('.js-clear-history-button');
 const changeLimitInputNode = document.querySelector('.change-limit-input');
 const popupChangeLimitButtonNode = document.querySelector('.js-popup-button');
 
-let LIMIT = 10000;
+const LIMIT =parseInt(localStorage.getItem('limit'));
 const expenses = [
 	//Массив, который хранит в себе список всех трат
 	// Форма:
@@ -46,22 +46,23 @@ clearButtonNode.addEventListener('click', function (){
 
 // Для кнопки "Изменить лимит"
 popupChangeLimitButtonNode.addEventListener('click', function () {
-	LIMIT = getNewLimitFromUser();
+	const LIMIT = getNewLimitFromUser();
 	let totalCost = calculateExpenses(expenses);
 	// Обновление для пользователя
 	renderLimit(LIMIT);
-	renderStatus(totalCost);
+	renderStatus(totalCost, LIMIT);
 	clearPopUpInput();
 });
 
 function init(expenses) {
 	let totalCost = 0;
 	totalCostOutputNode.innerText = calculateExpenses(expenses) + CURRENCY;
-	limitNode.innerText  = LIMIT + CURRENCY;
+	renderLimit(LIMIT);
 	statusNode.innerText = STATUS_IN_LIMIT;
 }
 function trackExpensee(expense) {
 	expenses.push(expense);
+
 }
 
 function getExpenseFromUser() {
@@ -97,13 +98,18 @@ function calculateExpenses(expenses) {
 
 function render(expenses) {
 	const totalCost = calculateExpenses(expenses);
+	const LIMIT = localStorage.getItem('limit');
 	renderHistory(expenses);
 	renderSum(totalCost);
-	renderStatus(totalCost);
+	renderStatus(totalCost, LIMIT);
 }
 
 function renderLimit(limit) {
-	limitNode.innerText = limit;
+	if(!limit) {
+		limit = 10000;
+		limitNode.innerText = limit + CURRENCY;
+	}
+	limitNode.innerText = limit + CURRENCY;
 }
 
 function renderHistory(expenses) {
@@ -119,9 +125,9 @@ function renderSum(totalCost) {
 	totalCostOutputNode.innerText = totalCost + CURRENCY;
 }
 
-function renderStatus(totalCost) {
-	const availableMoney = LIMIT - totalCost;
-	if (totalCost <= LIMIT) {
+function renderStatus(totalCost, limit) {
+	const availableMoney = limit - totalCost;
+	if (totalCost <= limit) {
 		statusNode.innerText = STATUS_IN_LIMIT + ", есть " + availableMoney;
 		statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
 	} else {
@@ -133,10 +139,12 @@ function renderStatus(totalCost) {
 //Функция для считывания нового лимита
 function getNewLimitFromUser() {
 	if (changeLimitInputNode.value == "" || changeLimitInputNode.value <= 0) {
+		alert("Не введен лимит");
 		return null;
 	}
 	// 2.1 Берем данные из инпута
 	const newLimit = parseInt(changeLimitInputNode.value);
+	localStorage.setItem('limit', newLimit);
 	// 2.2 Обновляем поле
 	togglePopup()
 
