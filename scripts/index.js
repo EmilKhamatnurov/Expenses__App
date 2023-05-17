@@ -30,7 +30,7 @@ let expenses = [
 ];
 const expensesFormStorageString = localStorage.getItem(STORAGE_LABEL_EXPENSES);
 const expensesFormStorage = JSON.parse(expensesFormStorageString);
-console.log(expensesFormStorage);
+
 if(Array.isArray(expensesFormStorage)) {
 	expenses = expensesFormStorage;
 }
