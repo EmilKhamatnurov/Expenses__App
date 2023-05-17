@@ -18,9 +18,9 @@ const clearButtonNode = document.querySelector('.js-clear-history-button');
 const changeLimitInputNode = document.querySelector('.change-limit-input');
 const popupChangeLimitButtonNode = document.querySelector('.js-popup-button');
 
-// Получает лимит из памяти браузера
+// Получает лимит из памяти браузера (проверка значения в функциях)
 const LIMIT = parseInt(localStorage.getItem(STORAGE_LABEL_LIMIT));
-const expenses = [
+let expenses = [
 	//Массив, который хранит в себе список всех трат
 	// Формат:
 	// {
@@ -28,6 +28,12 @@ const expenses = [
 	// category: "Продукты",
 	// },
 ];
+const expensesFormStorageString = localStorage.getItem(STORAGE_LABEL_EXPENSES);
+const expensesFormStorage = JSON.parse(expensesFormStorageString);
+console.log(expensesFormStorage);
+if(Array.isArray(expensesFormStorage)) {
+	expenses = expensesFormStorage;
+}
 // Инициализируем приложение
 init(expenses);
 
@@ -47,7 +53,10 @@ buttonNode.addEventListener('click', function () {
 // Код для кнопки "Сбросить все расходы"
 clearButtonNode.addEventListener('click', function (){
 	expenses.length = 0;
+	//очищаем пасять браузера
+	localStorage.removeItem(STORAGE_LABEL_EXPENSES)
 	render(expenses);
+
 	statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
 });
 
@@ -68,7 +77,8 @@ function init(expenses) {
 	let totalCost = 0;
 	totalCostOutputNode.innerText = calculateExpenses(expenses) + CURRENCY;
 	renderLimit(LIMIT);
-	statusNode.innerText = STATUS_IN_LIMIT;
+	// statusNode.innerText = STATUS_IN_LIMIT;
+	render(expenses);
 }
 
 // записываем траты в память браузера
