@@ -5,22 +5,56 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Приложение учета расходов</title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="styles/index.css">
+	<link rel="stylesheet" href="styles/reset.css">
 </head>
 <body>
 	<div class="expenses-app">
-		<h3>Учет расходов</h3>
-		<div class="row">
-			<input class="js-input input" type="number">
-			<button class="js-input-button input-button">Добавить</button>
-		</div>
-		<div class="row">
-			<div class="expenses-app__info">
-				<p>Лимит: <span class="js-limit"></span></p>
-				<p>Всего: <span class="js-total-output"></span></p>
-				<p class="js-status status"></p>
+		<div class="container">
+
+			<div class="expenses-app__header">
+				<img class="expenses-app__logo" src="resorces/App__Logo.png" alt="Application Logo">
+				<h3 class="expenses-app__title">Учет расходов</h3>
 			</div>
-			<div class="js-history history"></div>
+
+			<div class="expenses-app__info">
+				<div class="expenses-app__block">
+					<p class="limit__text">Лимит: <span class="js-limit limit"></span></p>
+					<p class="status__text" >Статус: <span class="js-status status"></span></p>
+				</div>
+				<div class="expenses-app__block">
+					<p class="total-output__text">Всего: <span class="js-total-output total-output"></span></p>
+				</div>
+			</div>
+
+			<div class="expenses-app__action">
+				<p>Добавьте трату</p>
+				<input class="js-input input" type="number">
+				<p>Выберете категорию</p>
+				<select name="category" class="js-category">
+					<option value="продукты">Продукты</option>
+					<option value="коммунальные услуги">Коммунальные услуги</option>
+					<option value="развлечения">Развлечения</option>
+					<option value="транспорт">Транспорт</option>
+					<option value="покупки">Покупки</option>
+					<option value="другое">Другое</option>
+				</select>
+			</div>
+
+			<div class="row">
+				<button class="js-input-button input-button">Добавить</button>
+			</div>
+			<div class="row">
+
+					
+					
+					
+
+				<div class="js-history history"></div>
+			</div>
+			<div class="row">
+				<button class="js-clear-history-button">Сбросить расходы</button>
+			</div>
 		</div>
 	</div>
 	<script src="expenses-app.js"></script>

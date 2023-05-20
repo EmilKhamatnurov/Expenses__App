@@ -1,0 +1,76 @@
+html,
+body {
+	background-color: #131313;
+}
+
+.container {
+	max-width: 342px;
+	margin: 0 auto;
+}
+
+.expenses-app {
+	margin: 0 auto;
+	max-width: 375px;
+	background-color: #131313;
+	padding-top: 17px;
+}
+
+.expenses-app__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.expenses-app__block {
+	background-color: #3D3D3D;
+	padding: 19px 0 19px 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 9px;
+	border-radius: 10px;
+}
+
+.limit,
+.status,
+.total-output {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+}
+
+.limit__text,
+.status__text,
+.total-output__text {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	color: #fff;
+}
+
+.expenses-app__logo {
+	width: 74px;
+	height: 74px;
+}
+
+.expenses-app__title {
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 40px;
+	text-transform: uppercase;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+}
+
+.status {
+	color: green;
+}
+
+.status_red {
+	color: red;
+}

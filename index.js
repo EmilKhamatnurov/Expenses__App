@@ -11,30 +11,35 @@ const totalCostOutputNode = document.querySelector('.js-total-output');
 const historyNode = document.querySelector('.js-history');
 const limitNode = document.querySelector('.js-limit');
 const statusNode = document.querySelector('.js-status');
+const categoryNode = document.querySelector('.js-category');
+const clearButtonNode = document.querySelector('.js-clear-history-button');
 
 const expenses = [
 	//Массив, который хранит в себе список всех трат
 	// Форма:
 	// {
-	// category: "Продукты",
 	// amount: 0,
+	// category: "Продукты",
 	// },
 ];
 init(expenses);
-
+// Код для кнопки "Добавить"
 buttonNode.addEventListener('click', function () {
 	const expense = getExpenseFromUser();
 	
 	if (!expense) {
 		return
 	}
-	console.log(expense);
 	trackExpensee(expense);
 
 	render(expenses)
 	
 });
-
+// Код для кнопки "Сбросить все расходы"
+clearButtonNode.addEventListener('click', function (){
+	expenses.length = 0;
+	render(expenses);
+});
 
 function init(expenses) {
 	let totalCost = 0;
@@ -52,7 +57,7 @@ function getExpenseFromUser() {
 		return null;
 	}
 	// 2.1 Сохраняем трату с список
-	const expense = {amount: parseInt(inputNode.value)};
+	const expense = {amount: parseInt(inputNode.value), category: categoryNode.value};
 	// 2.2 Обновляем поле
 	clearInput()
 
@@ -83,7 +88,7 @@ function render(expenses) {
 function renderHistory(expenses) {
 	let expensesListHTML = '';
 	expenses.forEach(element => {
-		expensesListHTML += `<li>${element["amount"]} ${CURRENCY}</li>`;
+		expensesListHTML += `<li>${element["amount"]} ${CURRENCY} - ${element["category"]}</li>`;
 	});
 	
 	historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
