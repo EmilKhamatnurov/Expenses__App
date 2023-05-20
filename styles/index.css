@@ -149,8 +149,6 @@ hr {
 	color: red;
 }
 
-
-
 .popup {
 	position: fixed;
 	top: 0;
@@ -229,4 +227,32 @@ hr {
 	background-color: #4EBDD9;
 	padding: 10px 0;
 	border-radius: 15px;
+}
+
+@media (min-width: 650px) {
+
+	.expenses-app {
+		max-width: 650px;
+	}
+
+	.container {
+		max-width: 100%;
+	}
+
+	.expenses-app__header {
+		display: flex;
+		justify-content: center;
+		gap: 15px;
+	}
+
+	.expenses-app__wrapper {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.popup__content {
+		width: 30%;
+		height: 250px;
+	}
 }
