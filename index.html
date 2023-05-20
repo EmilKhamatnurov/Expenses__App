@@ -28,10 +28,10 @@
 			</div>
 
 			<div class="expenses-app__action">
-				<p>Добавьте трату</p>
-				<input class="js-input input" type="number">
-				<p>Выберете категорию</p>
-				<select name="category" class="js-category">
+				<p class="chapter-title">Добавьте трату</p>
+				<input class="js-input input input-style" type="number">
+				<p class="chapter-title">Выберете категорию</p>
+				<select name="category" class="js-category category input-style">
 					<option value="продукты">Продукты</option>
 					<option value="коммунальные услуги">Коммунальные услуги</option>
 					<option value="развлечения">Развлечения</option>
@@ -40,21 +40,11 @@
 					<option value="другое">Другое</option>
 				</select>
 			</div>
-
-			<div class="row">
-				<button class="js-input-button input-button">Добавить</button>
-			</div>
-			<div class="row">
-
-					
-					
-					
-
+			<button class="js-input-button input-button">Добавить</button>
+			<div class="expenses-app__block expenses-app__history-block"> 
 				<div class="js-history history"></div>
 			</div>
-			<div class="row">
-				<button class="js-clear-history-button">Сбросить расходы</button>
-			</div>
+			<button class="js-clear-history-button clear-history-button">Сбросить расходы</button>
 		</div>
 	</div>
 	<script src="expenses-app.js"></script>

@@ -8,11 +8,23 @@ body {
 	margin: 0 auto;
 }
 
+.input-style {
+	color: black;
+	background-color: #fff;
+	font-size: 24px;
+	line-height: 29px;
+	width: 100%;
+	padding: 6px 15px;
+	border-radius: 15px;
+	margin-bottom: 13px;
+}
+
 .expenses-app {
 	margin: 0 auto;
 	max-width: 375px;
 	background-color: #131313;
 	padding-top: 17px;
+	padding-bottom: 17px;
 }
 
 .expenses-app__header {
@@ -32,12 +44,27 @@ body {
 	border-radius: 10px;
 }
 
+.chapter-title {
+	font-size: 24px;
+	line-height: 29px;
+}
+
 .limit,
 .status,
 .total-output {
 	font-weight: 500;
 	font-size: 24px;
 	line-height: 29px;
+}
+
+.input-button {
+	background: #4EBDD9;
+	border-radius: 15px;
+	font-size: 24px;
+	line-height: 29px;
+	width: 100%;
+	padding: 6px 0;
+	border-radius: 15px;
 }
 
 .limit__text,
@@ -61,11 +88,26 @@ body {
 	text-transform: uppercase;
 }
 
+.expenses-app__history-block {
+	height: 250px;
+	overflow: scroll;
+}
+
+.clear-history-button {
+	width: 100%;
+	font-size: 24px;
+	line-height: 29px;
+	background: #ED4040;
+	border-radius: 15px;
+	padding: 6px 0;
+}
+
 .row {
 	display: flex;
 	justify-content: space-between;
 	align-items: start;
 }
+
 
 .status {
 	color: green;
@@ -73,4 +115,10 @@ body {
 
 .status_red {
 	color: red;
+}
+
+.history {
+	font-size: 20px;
+	line-height: 24px;
+	margin-left: 15px;
 }
