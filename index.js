@@ -39,6 +39,7 @@ buttonNode.addEventListener('click', function () {
 clearButtonNode.addEventListener('click', function (){
 	expenses.length = 0;
 	render(expenses);
+	statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
 });
 
 function init(expenses) {
@@ -99,10 +100,11 @@ function renderSum(totalCost) {
 }
 
 function renderStatus(totalCost) {
+	const availableMoney = LIMIT - totalCost;
 	if (totalCost <= LIMIT) {
-		statusNode.innerText = STATUS_IN_LIMIT;
+		statusNode.innerText = STATUS_IN_LIMIT + ", есть " + availableMoney;
 	} else {
-		statusNode.innerText = STATUS_OUT_OF_LIMIT;
+		statusNode.innerText = STATUS_OUT_OF_LIMIT + " на " + availableMoney;
 		statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
 	}
 }
