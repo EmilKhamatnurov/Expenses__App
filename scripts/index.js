@@ -66,7 +66,7 @@ function trackExpensee(expense) {
 
 function getExpenseFromUser() {
 	//1.Получаем значения из поля ввода
-	if (inputNode.value == "") {
+	if (inputNode.value == "" || inputNode.value <= 0) {
 		return null;
 	}
 	// 2.1 Сохраняем трату с список
@@ -80,6 +80,7 @@ function getExpenseFromUser() {
 function clearInput() {
 	inputNode.value = "";
 }
+
 function clearPopUpInput() {
 	changeLimitInputNode.value = "";
 }
@@ -131,7 +132,7 @@ function renderStatus(totalCost) {
 
 //Функция для считывания нового лимита
 function getNewLimitFromUser() {
-	if (changeLimitInputNode.value == "") {
+	if (changeLimitInputNode.value == "" || changeLimitInputNode.value <= 0) {
 		return null;
 	}
 	// 2.1 Берем данные из инпута
